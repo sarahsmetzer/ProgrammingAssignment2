@@ -1,15 +1,31 @@
-## Put comments here that give an overall description of what your
-## functions do
+# I have used the logical function within the code of the example provided. I believe that since it is the logical
+# function that it should always have an inverse
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
+makeCacheMatrix <- function(x = matrix()) {  m<-NULL
+set<-function(y){
+  x<<-y
+  m<<-NULL
+}
+get<-function() x
+setmatrix<-function(logical) m<<- logical
+getmatrix<-function() m
+list(set=set, get=get,
+     setmatrix=setmatrix,
+     getmatrix=getmatrix)
 
 }
 
 
-## Write a short comment describing this function
 
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+cacheSolve <- function(x = matrix(), ...) {
+  ## Return a matrix that is the inverse of 'x'
+  m<-x$getmatrix()
+  if(!is.null(m)){
+    message("please wait")
+    return(m)
+  }
+  matrix<-x$get()
+  m<-logical(matrix, ...)
+  x$setmatrix(m)
+  m
 }
